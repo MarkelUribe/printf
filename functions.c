@@ -6,12 +6,11 @@
 /*   By: muribe-l <muribe-l@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 10:44:47 by muribe-l          #+#    #+#             */
-/*   Updated: 2024/01/12 13:27:55 by muribe-l         ###   ########.fr       */
+/*   Updated: 2024/01/12 15:13:23 by muribe-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft/libft.h"
 
 int	print_double(double d)
 {
