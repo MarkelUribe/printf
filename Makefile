@@ -6,7 +6,7 @@
 #    By: muribe-l <muribe-l@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/11 16:04:16 by muribe-l          #+#    #+#              #
-#    Updated: 2024/01/12 11:43:50 by muribe-l         ###   ########.fr        #
+#    Updated: 2024/01/12 13:24:31 by muribe-l         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,22 +22,26 @@ RM = rm -rf
 LIBFTNAME = libft.a
 LIBFTDIR = ./libft
 
-$(OBJECTS): $(SOURCES)
-	$(LIB) -c $(SOURCES) -o $(OBJECTS)
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME): $(OBJECTS)
+$(LIBFTDIR)/$(LIBFTNAME):
+	make -C $(LIBFTDIR)
+
+$(NAME): $(OBJECTS) $(LIBFTDIR)/$(LIBFTNAME)
 	$(LIB) $(NAME) $(OBJECTS)
+	$(LIB) $(NAME) $(LIBFTDIR)/*.o
 
 all: $(NAME)
 
 clean:
 	$(RM) $(OBJECTS)
+	make clean -C $(LIBFTDIR)
 
 fclean: clean
 	$(RM) $(NAME)
+	make fclean -C $(LIBFTDIR)
 
 re: fclean all
-
-rebonus: fclean bonus
 
 .PHONY:	all clean fclean re

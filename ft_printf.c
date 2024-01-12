@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_prinft.c                                        :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: muribe-l <muribe-l@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 16:13:18 by muribe-l          #+#    #+#             */
-/*   Updated: 2024/01/12 11:26:25 by muribe-l         ###   ########.fr       */
+/*   Updated: 2024/01/12 13:28:00 by muribe-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 #include "libft/libft.h"
 
-static void	*get_conversion2(char c, va_list args)
+static int	get_conversion2(char c, va_list args)
 {
-	void	*p;
+	int	p;
 
 	if (c == 'i')
 	{
@@ -34,15 +34,22 @@ static void	*get_conversion2(char c, va_list args)
 	else if (c == 'X')
 		return (ft_hex(va_arg(args, size_t), 0, "0123456789ABCDEF"));
 	else if (c == '%')
-		return (write(1, '%', 1));
+	{
+		ft_putchar_fd('%', 1);
+		return (1);
+	}
+	return (0);
 }
 
-void	*get_conversion(char c, va_list args)
+int	get_conversion(char c, va_list args)
 {
 	void	*p;
 
 	if (c == 'c')
-		return (write(1, va_arg(args, char), 1));
+	{
+		ft_putchar_fd((char)va_arg(args, int), 1);
+		return (1);
+	}
 	else if (c == 's')
 	{
 		p = (char *)va_arg(args, char *);
@@ -58,6 +65,7 @@ void	*get_conversion(char c, va_list args)
 		return (print_double(va_arg(args, double)));
 	else
 		get_conversion2(c, args);
+	return (0);
 }
 
 int	ft_printf(char const *format, ...)
