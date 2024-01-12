@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: muribe-l <muribe-l@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/11 18:03:15 by muribe-l          #+#    #+#             */
-/*   Updated: 2024/01/12 10:44:20 by muribe-l         ###   ########.fr       */
+/*   Created: 2024/01/03 22:20:55 by muribe-l          #+#    #+#             */
+/*   Updated: 2024/01/03 22:25:48 by muribe-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
+#include "libft.h"
 
-int		ft_printf(char const *format, ...);
-int		ft_hex(long nbr, int i, char *base);
-void	*get_conversion(char c, va_list args);
-int		print_double(double d);
+void	ft_putstr_fd(char *s, int fd)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] != '\0')
+	{
+		write(fd, &s[i], 1);
+		i++;
+	}
+}

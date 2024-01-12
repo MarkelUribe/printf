@@ -6,29 +6,29 @@
 #    By: muribe-l <muribe-l@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/11 16:04:16 by muribe-l          #+#    #+#              #
-#    Updated: 2024/01/11 16:32:23 by muribe-l         ###   ########.fr        #
+#    Updated: 2024/01/12 11:43:50 by muribe-l         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-LIB = ar rcs
-RM = rm -f
-
 NAME = libftprintf.a
-.SILENT:
-SOURCES = ft_printf.c
+SOURCES = ft_printf.c functions.c
 
 OBJECTS = $(SOURCES:.c=.o)
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
+LIB = ar rcs
+RM = rm -rf
+LIBFTNAME = libft.a
+LIBFTDIR = ./libft
 
-all: $(NAME)
+$(OBJECTS): $(SOURCES)
+	$(LIB) -c $(SOURCES) -o $(OBJECTS)
 
-$(NAME): $(OBJECTS) $(INCLUDE)
+$(NAME): $(OBJECTS)
 	$(LIB) $(NAME) $(OBJECTS)
 
-%.o: %.c
-	$(CC) -c $(CFLAGS) $?
+all: $(NAME)
 
 clean:
 	$(RM) $(OBJECTS)
@@ -39,3 +39,5 @@ fclean: clean
 re: fclean all
 
 rebonus: fclean bonus
+
+.PHONY:	all clean fclean re

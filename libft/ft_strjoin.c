@@ -1,18 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: muribe-l <muribe-l@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/11 18:03:15 by muribe-l          #+#    #+#             */
-/*   Updated: 2024/01/12 10:44:20 by muribe-l         ###   ########.fr       */
+/*   Created: 2023/12/18 13:53:18 by muribe-l          #+#    #+#             */
+/*   Updated: 2023/12/19 14:48:32 by muribe-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
+#include "libft.h"
 
-int		ft_printf(char const *format, ...);
-int		ft_hex(long nbr, int i, char *base);
-void	*get_conversion(char c, va_list args);
-int		print_double(double d);
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	char	*r;
+	size_t	len_s1;
+	size_t	len_s2;
+
+	len_s1 = ft_strlen(s1);
+	len_s2 = ft_strlen(s2);
+	r = (char *)malloc(len_s1 + len_s2 + 1);
+	if (!r)
+		return (NULL);
+	ft_strlcpy(r, s1, len_s1 + 1);
+	ft_strlcat(r, s2, len_s1 + len_s2 + 1);
+	return (r);
+}

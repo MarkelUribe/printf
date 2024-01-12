@@ -1,18 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: muribe-l <muribe-l@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/11 18:03:15 by muribe-l          #+#    #+#             */
-/*   Updated: 2024/01/12 10:44:20 by muribe-l         ###   ########.fr       */
+/*   Created: 2024/01/04 14:08:51 by muribe-l          #+#    #+#             */
+/*   Updated: 2024/01/04 14:16:04 by muribe-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
+#include "libft.h"
 
-int		ft_printf(char const *format, ...);
-int		ft_hex(long nbr, int i, char *base);
-void	*get_conversion(char c, va_list args);
-int		print_double(double d);
+int	ft_lstsize(t_list *lst)
+{
+	int	n;
+
+	n = 0;
+	while (lst)
+	{
+		lst = lst->next;
+		n++;
+	}
+	return (n);
+}

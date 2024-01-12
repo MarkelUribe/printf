@@ -1,18 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_lstlast_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: muribe-l <muribe-l@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/11 18:03:15 by muribe-l          #+#    #+#             */
-/*   Updated: 2024/01/12 10:44:20 by muribe-l         ###   ########.fr       */
+/*   Created: 2024/01/04 14:17:00 by muribe-l          #+#    #+#             */
+/*   Updated: 2024/01/04 14:24:34 by muribe-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
+#include "libft.h"
 
-int		ft_printf(char const *format, ...);
-int		ft_hex(long nbr, int i, char *base);
-void	*get_conversion(char c, va_list args);
-int		print_double(double d);
+t_list	*ft_lstlast(t_list *lst)
+{
+	int	i;
+
+	i = ft_lstsize(lst);
+	while (i > 1)
+	{
+		lst = lst->next;
+		i--;
+	}
+	return (lst);
+}

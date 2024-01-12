@@ -1,18 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: muribe-l <muribe-l@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/11 18:03:15 by muribe-l          #+#    #+#             */
-/*   Updated: 2024/01/12 10:44:20 by muribe-l         ###   ########.fr       */
+/*   Created: 2024/01/03 15:26:05 by markel            #+#    #+#             */
+/*   Updated: 2024/01/11 12:40:37 by muribe-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
+#include "libft.h"
 
-int		ft_printf(char const *format, ...);
-int		ft_hex(long nbr, int i, char *base);
-void	*get_conversion(char c, va_list args);
-int		print_double(double d);
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+{
+	int		i;
+	char	*str;
+
+	i = 0;
+	str = (char *)malloc(sizeof(char) * ft_strlen(s) + 1);
+	if (!str)
+		return (NULL);
+	while (s[i])
+	{
+		str[i] = f(i, s[i]);
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
+}

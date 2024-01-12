@@ -1,18 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: muribe-l <muribe-l@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/11 18:03:15 by muribe-l          #+#    #+#             */
-/*   Updated: 2024/01/12 10:44:20 by muribe-l         ###   ########.fr       */
+/*   Created: 2023/12/11 15:05:58 by muribe-l          #+#    #+#             */
+/*   Updated: 2024/01/03 20:41:04 by muribe-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
+#include <stdio.h>
 
-int		ft_printf(char const *format, ...);
-int		ft_hex(long nbr, int i, char *base);
-void	*get_conversion(char c, va_list args);
-int		print_double(double d);
+void	ft_bzero(char *s, size_t n)
+{
+	while (n > 0)
+	{
+		*s = '\0';
+		s++;
+		n--;
+	}
+}
+/*
+#include <stdio.h>
+int	main(void)
+{
+	char s[] = "asmoofddhgh";
+	ft_bzero(s, 4);
+	printf("%s", s);
+}*/

@@ -1,18 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: muribe-l <muribe-l@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/11 18:03:15 by muribe-l          #+#    #+#             */
-/*   Updated: 2024/01/12 10:44:20 by muribe-l         ###   ########.fr       */
+/*   Created: 2023/12/11 14:36:59 by muribe-l          #+#    #+#             */
+/*   Updated: 2024/01/03 20:42:03 by muribe-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
+#include <stdio.h>
 
-int		ft_printf(char const *format, ...);
-int		ft_hex(long nbr, int i, char *base);
-void	*get_conversion(char c, va_list args);
-int		print_double(double d);
+void	*ft_memset(void *b, int c, size_t len)
+{
+	void	*r;
+
+	r = b;
+	while (len > 0)
+	{
+		*(char *)b = c;
+		b++;
+		len--;
+	}
+	return (r);
+}
+/*
+#include <stdio.h>
+int	main(void)
+{
+	char str[] ="This is string.h library function";
+   puts(str);
+
+   ft_memset(str,'$',7);
+   puts(str);
+   
+   return(0);
+}*/
