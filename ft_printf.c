@@ -6,7 +6,7 @@
 /*   By: muribe-l <muribe-l@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 16:13:18 by muribe-l          #+#    #+#             */
-/*   Updated: 2024/01/12 16:08:07 by muribe-l         ###   ########.fr       */
+/*   Updated: 2024/01/15 16:55:21 by muribe-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,23 @@
 
 static int	get_conversion2(char c, va_list args)
 {
-	int	p;
-
-	if (c == 'i')
-	{
-		p = (int)va_arg(args, int);
-		ft_putnbr_fd(p, 1);
-		return ((int)ft_strlen(ft_itoa(p)));
-	}
+	if (c == 'i' || c == 'd')
+		return (ft_num((int)va_arg(args, int), 1) + 1);
 	else if (c == 'u')
-	{
-		p = (int)va_arg(args, unsigned int);
-		ft_putnbr_fd(p, 1);
-		return ((int)ft_strlen(ft_itoa(p)));
-	}
+		return (ft_num(va_arg(args, unsigned int), 1) + 1);
 	else if (c == 'x')
-		return (ft_hex(va_arg(args, size_t), 0, "0123456789abcdef"));
+		return (ft_hex(va_arg(args, unsigned int), "0123456789abcdef"));
 	else if (c == 'X')
-		return (ft_hex(va_arg(args, size_t), 0, "0123456789ABCDEF"));
+		return (ft_hex(va_arg(args, unsigned int), "0123456789ABCDEF"));
 	else if (c == '%')
 	{
 		ft_putchar_fd('%', 1);
 		return (1);
+	}
+	else if (c == 'p')
+	{
+		write (1, "0x", 2);
+		return (ft_hex_unisigned(va_arg(args, size_t), "0123456789abcdef") + 2);
 	}
 	return (0);
 }
@@ -60,15 +55,8 @@ int	get_conversion(char c, va_list args)
 		ft_putstr_fd(p, 1);
 		return (ft_strlen(p));
 	}
-	else if (c == 'p')
-	{
-		write (1, "0x", 2);
-		return (ft_hex(va_arg(args, size_t), 0, "0123456789abcdef") + 2);
-	}
-	else if (c == 'd')
-		return (print_double(va_arg(args, double)));
 	else
-		get_conversion2(c, args);
+		return (get_conversion2(c, args));
 	return (0);
 }
 

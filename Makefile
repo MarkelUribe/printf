@@ -6,7 +6,7 @@
 #    By: muribe-l <muribe-l@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/11 16:04:16 by muribe-l          #+#    #+#              #
-#    Updated: 2024/01/12 13:24:31 by muribe-l         ###   ########.fr        #
+#    Updated: 2024/01/15 16:58:08 by muribe-l         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ $(LIBFTDIR)/$(LIBFTNAME):
 
 $(NAME): $(OBJECTS) $(LIBFTDIR)/$(LIBFTNAME)
 	$(LIB) $(NAME) $(OBJECTS)
-	$(LIB) $(NAME) $(LIBFTDIR)/*.o
+
 
 all: $(NAME)
 
