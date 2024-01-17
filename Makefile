@@ -6,7 +6,7 @@
 #    By: muribe-l <muribe-l@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/11 16:04:16 by muribe-l          #+#    #+#              #
-#    Updated: 2024/01/15 16:58:08 by muribe-l         ###   ########.fr        #
+#    Updated: 2024/01/17 17:37:02 by muribe-l         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,12 +25,10 @@ LIBFTDIR = ./libft
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(LIBFTDIR)/$(LIBFTNAME):
-	make -C $(LIBFTDIR)
-
-$(NAME): $(OBJECTS) $(LIBFTDIR)/$(LIBFTNAME)
+$(NAME): $(OBJECTS)
+	make -C $(LIBFTDIR) all
+	cp $(LIBFTDIR)/$(LIBFTNAME) $(NAME)
 	$(LIB) $(NAME) $(OBJECTS)
-
 
 all: $(NAME)
 
